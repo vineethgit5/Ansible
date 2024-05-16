@@ -1,0 +1,17 @@
+- name: install apache
+  apt:
+    name: "{{package_name}}"
+    update_cache: yes
+    state: latest
+- name: enable service    
+  service:
+    name: "{{service_name}}"
+    enabled: true
+    state: started
+
+- name: copy index.html
+  copy:
+    src: "{{source_path}}/index.html"
+    dest: "{{destination_path}}/index.html"
+  notify: Restart apache
+

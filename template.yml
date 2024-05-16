@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become_user: root
+  become_method: sudo
+  become: yes
+
+  tasks:
+    - name: generate report on server using dynamic configuration
+      template:
+        src: template-j2.j2
+        dest: /home/ubuntu/result.txt

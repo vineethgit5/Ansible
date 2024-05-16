@@ -1,0 +1,11 @@
+remote machine is of {{ansible_os_family}} type
+storage space is df -Ht
+memory is free -m
+the total memory of remote machine is {{ansible_memtotal_mb}}
+python version is {{ansible_python_version}}
+
+ {% if ansible_memtotal_mb > 900 %}
+  memory is exhausting
+ {% else %}
+  memory is stable
+ {% endif %}
